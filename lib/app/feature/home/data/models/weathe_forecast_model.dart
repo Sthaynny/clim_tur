@@ -23,11 +23,21 @@ class WeatherForecastModel extends WeatherForecastEntity {
           seaLevel: seaLevel,
         );
 
-  @override
-  String toString() {
-    return 'WeatherForecastEntity(temp: $temp, feelsLike: $feelsLike, tempMin: $tempMin, tempMax: $tempMax, pressure: $pressure, humidity: $humidity, seaLevel: $seaLevel, grndLevel: $grndLevel)';
-  }
+  factory WeatherForecastModel.fromJson(String source) =>
+      WeatherForecastModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
 
+  factory WeatherForecastModel.fromMap(Map<String, dynamic> map) {
+    return WeatherForecastModel(
+      temp: map['temp'] as double,
+      feelsLike: map['feelsLike'] as double,
+      tempMin: map['tempMin'] as double,
+      tempMax: map['tempMax'] as double,
+      pressure: map['pressure'] as int,
+      humidity: map['humidity'] as int,
+      seaLevel: map['seaLevel'] as int,
+      grndLevel: map['grndLevel'] as int,
+    );
+  }
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -68,21 +78,5 @@ class WeatherForecastModel extends WeatherForecastEntity {
     };
   }
 
-  factory WeatherForecastModel.fromMap(Map<String, dynamic> map) {
-    return WeatherForecastModel(
-      temp: map['temp'],
-      feelsLike: map['feelsLike'],
-      tempMin: map['tempMin'],
-      tempMax: map['tempMax'],
-      pressure: map['pressure'],
-      humidity: map['humidity'],
-      seaLevel: map['seaLevel'],
-      grndLevel: map['grndLevel'],
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory WeatherForecastModel.fromJson(String source) =>
-      WeatherForecastModel.fromMap(json.decode(source));
 }

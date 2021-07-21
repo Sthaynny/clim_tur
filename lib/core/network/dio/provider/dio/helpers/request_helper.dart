@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 abstract class RequestHelper {
   Future<NetworkResponse> makeRequestHelper({
-    required Endpoint endpoint,
+    required EndPoint endpoint,
     required Dio httpProvider,
   });
 }

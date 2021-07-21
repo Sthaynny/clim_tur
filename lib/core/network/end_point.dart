@@ -1,7 +1,7 @@
 import 'package:clim_tur/core/network/request/irequest_method.dart';
 
-class Endpoint {
-  Endpoint({
+class EndPoint {
+  EndPoint({
     required this.path,
     required this.method,
     this.queryParameters,

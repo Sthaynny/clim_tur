@@ -1,12 +1,4 @@
 class WeatherForecastEntity {
-  final double temp;
-  final double feelsLike;
-  final double tempMin;
-  final double tempMax;
-  final int pressure;
-  final int humidity;
-  final int seaLevel;
-  final int grndLevel;
   WeatherForecastEntity({
     required this.temp,
     required this.feelsLike,
@@ -17,6 +9,14 @@ class WeatherForecastEntity {
     required this.seaLevel,
     required this.grndLevel,
   });
+  final double temp;
+  final double feelsLike;
+  final double tempMin;
+  final double tempMax;
+  final int pressure;
+  final int humidity;
+  final int seaLevel;
+  final int grndLevel;
 
   WeatherForecastEntity copyWith({
     double? temp,

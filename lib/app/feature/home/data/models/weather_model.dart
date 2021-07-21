@@ -14,6 +14,18 @@ class WeatherModel extends WeatherEntity {
           description: description,
           icon: icon,
         );
+
+  factory WeatherModel.fromMap(Map<String, dynamic> map) {
+    return WeatherModel(
+      id: map['id'] as int,
+      main: map['main'] as String,
+      description: map['description'] as String,
+      icon: map['icon'] as String,
+    );
+  }
+
+  factory WeatherModel.fromJson(String source) =>
+      WeatherModel.fromMap(json.decode(source) as Map<String, dynamic>);
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -23,23 +35,11 @@ class WeatherModel extends WeatherEntity {
     };
   }
 
-  factory WeatherModel.fromMap(Map<String, dynamic> map) {
-    return WeatherModel(
-      id: map['id'],
-      main: map['main'],
-      description: map['description'],
-      icon: map['icon'],
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory WeatherModel.fromJson(String source) =>
-      WeatherModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'WeatherEntity(id: $id, main: $main, description: $description, icon: $icon)';
+    return '''WeatherEntity(id: $id, main: $main, description: $description, icon: $icon)''';
   }
 
   @override

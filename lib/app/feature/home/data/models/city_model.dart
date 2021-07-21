@@ -8,7 +8,25 @@ class CityModel extends CityEntity {
     required String name,
     required String country,
     required int timezone,
-  }) : super(id: id, name: name, country: country, timezone: timezone);
+  }) : super(
+          id: id,
+          name: name,
+          country: country,
+          timezone: timezone,
+        );
+
+  factory CityModel.fromMap(Map<String, dynamic> map) {
+    return CityModel(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      country: map['country'] as String,
+      timezone: map['timezone'] as int,
+    );
+  }
+
+  factory CityModel.fromJson(String source) =>
+      CityModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -18,24 +36,7 @@ class CityModel extends CityEntity {
     };
   }
 
-  factory CityModel.fromMap(Map<String, dynamic> map) {
-    return CityModel(
-      id: map['id'],
-      name: map['name'],
-      country: map['country'],
-      timezone: map['timezone'],
-    );
-  }
-
   String toJson() => json.encode(toMap());
-
-  factory CityModel.fromJson(String source) =>
-      CityModel.fromMap(json.decode(source));
-
-  @override
-  String toString() {
-    return 'CityEntity(id: $id, name: $name, country: $country, timezone: $timezone)';
-  }
 
   @override
   bool operator ==(Object other) {

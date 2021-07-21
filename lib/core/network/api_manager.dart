@@ -11,7 +11,7 @@ import 'package:clim_tur/core/network/end_point.dart';
 class ApiManager {
   static final NetworkProvider _networkProvider = DioProvider();
 
-  static Future<ApiResult> request({required Endpoint endpoint}) async {
+  static Future<ApiResult> request({required EndPoint endpoint}) async {
     try {
       final NetworkResponse response = await endpoint.method.request(
         http: _networkProvider,

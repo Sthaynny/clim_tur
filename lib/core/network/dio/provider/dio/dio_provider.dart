@@ -11,7 +11,7 @@ class DioProvider implements NetworkProvider {
 
   Future<NetworkResponse> _safeRequest({
     required RequestHelper requestHelper,
-    required Endpoint endpoint,
+    required EndPoint endpoint,
   }) async {
     _provider ??= await DioCreator.create(
       timeout: endpoint.timeout,
@@ -39,7 +39,7 @@ class DioProvider implements NetworkProvider {
   }
 
   @override
-  Future<NetworkResponse> get({required Endpoint endpoint}) {
+  Future<NetworkResponse> get({required EndPoint endpoint}) {
     final GetHelper requestHelper = GetHelper();
     return _safeRequest(requestHelper: requestHelper, endpoint: endpoint);
   }

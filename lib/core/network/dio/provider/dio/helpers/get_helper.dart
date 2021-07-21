@@ -4,9 +4,24 @@ import 'package:clim_tur/core/network/end_point.dart';
 import 'package:dio/dio.dart';
 
 class GetHelper implements RequestHelper {
+  Map<String, String>? mapToQueryString(EndPoint endpoint) {
+    Map<String, String>? queryParameters;
+    if (endpoint.queryParameters != null) {
+      queryParameters = endpoint.queryParameters!.map((key, dynamic value) {
+        if (value is List) {
+          return MapEntry<String, String>(key, value.join(','));
+        } else {
+          return MapEntry<String, String>(key, '$value');
+        }
+      });
+    }
+
+    return queryParameters;
+  }
+
   @override
   Future<NetworkResponse> makeRequestHelper({
-    required Endpoint endpoint,
+    required EndPoint endpoint,
     required Dio httpProvider,
   }) async {
     final Response<dynamic> response = await httpProvider.get<dynamic>(
@@ -23,19 +38,5 @@ class GetHelper implements RequestHelper {
       data: response.data,
       status: response.statusCode,
     );
-  }
-
-  Map<String, String>? mapToQueryString(Endpoint endpoint) {
-    Map<String, String>? queryParameters;
-    if (endpoint.queryParameters != null)
-      queryParameters = endpoint.queryParameters!.map((key, dynamic value) {
-        if (value is List) {
-          return MapEntry<String, String>(key, value.join(','));
-        } else {
-          return MapEntry<String, String>(key, '$value');
-        }
-      });
-
-    return queryParameters;
   }
 }

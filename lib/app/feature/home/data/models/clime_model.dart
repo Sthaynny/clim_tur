@@ -20,6 +20,20 @@ class ClimeModel extends ClimeEntity {
           weatherForecast: weatherForecast,
         );
 
+  factory ClimeModel.fromMap(Map<String, dynamic> map) {
+    return ClimeModel(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      cod: map['cod'] as int,
+      weather: List<WeatherModel>.from((map['weather'] as Iterable<dynamic>)
+          .map((map) => WeatherModel.fromMap(map as Map<String, dynamic>))),
+      weatherForecast:
+          WeatherForecastModel.fromMap(map['main'] as Map<String, dynamic>),
+    );
+  }
+  factory ClimeModel.fromJson(String source) =>
+      ClimeModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -30,25 +44,11 @@ class ClimeModel extends ClimeEntity {
     };
   }
 
-  factory ClimeModel.fromMap(Map<String, dynamic> map) {
-    return ClimeModel(
-      id: map['id'],
-      name: map['name'],
-      cod: map['cod'],
-      weather: List<WeatherModel>.from(
-          map['weather']?.map((x) => WeatherModel.fromMap(x))),
-      weatherForecast: WeatherForecastModel.fromMap(map['main']),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory ClimeModel.fromJson(String source) =>
-      ClimeModel.fromMap(json.decode(source));
+  String toJson() => jsonEncode(toMap());
 
   @override
   String toString() {
-    return 'ClimeEntity(id: $id, name: $name, cod: $cod, weather: $weather, main: $weatherForecast)';
+    return '''ClimeEntity(id: $id, name: $name, cod: $cod, weather: $weather, main: $weatherForecast)''';
   }
 
   @override
