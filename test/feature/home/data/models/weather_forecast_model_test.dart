@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:clim_tur/app/feature/home/data/models/weathe_forecast_model.dart';
 import 'package:clim_tur/app/feature/home/domain/entity/weathe_forecast_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
