@@ -11,6 +11,7 @@ linter:
     always_put_required_named_parameters_first: false
     sized_box_for_whitespace: false
     avoid_setters_without_getters: false
+    sort_pub_dependencies: false
     
     # Util classes are awesome!
     avoid_classes_with_only_static_members: false

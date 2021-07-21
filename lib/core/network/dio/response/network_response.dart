@@ -1,4 +1,6 @@
-class NetworkResponse {
+import 'package:clim_tur/core/network/dio/response/api_result.dart';
+
+class NetworkResponse implements ApiResult {
   NetworkResponse({
     required this.data,
     this.status,
