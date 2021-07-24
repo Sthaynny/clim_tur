@@ -3,6 +3,7 @@ import 'package:clim_tur/app/feature/home/domain/entity/clime_entity.dart';
 import 'package:clim_tur/app/feature/home/domain/usercases/get_clime_local_usercase.dart';
 import 'package:clim_tur/app/feature/home/domain/usercases/get_clime_usercase.dart';
 import 'package:clim_tur/app/feature/home/domain/usercases/save_clime_local_usercase.dart';
+import 'package:connectivity/connectivity.dart';
 
 part 'home_state.dart';
 
@@ -33,10 +34,14 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   Future<bool> loadClimeLocal(String search) async {
-    final responseCache = await _usercaseGetLocal(search);
-    if (responseCache != null) {
-      emit(HomeLoaded(responseCache));
-      return false;
+    final Connectivity _connectivity = Connectivity();
+    final resultConnection = await _connectivity.checkConnectivity();
+    if (resultConnection == ConnectivityResult.none) {
+      final responseCache = await _usercaseGetLocal(search);
+      if (responseCache != null) {
+        emit(HomeLoaded(responseCache));
+        return false;
+      }
     }
     return true;
   }

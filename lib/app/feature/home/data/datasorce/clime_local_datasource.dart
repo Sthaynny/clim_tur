@@ -22,13 +22,15 @@ class ClimeLocalDatasource {
     final _prefs = await SharedPreferences.getInstance();
     try {
       final response = _prefs.getStringList('climes') ?? <String>[];
-      final result =
+      final List<ClimeEntity> result =
           response.map((clime) => ClimeModel.fromJson(clime)).toList();
       if (result.length > 10) {
         result.removeLast();
       }
+
       result.insert(0, clime as ClimeModel);
-      final List<String> listData = result.map((e) => e.toJson()).toList();
+      final List<String> listData =
+          result.map((e) => (e as ClimeModel).toJson()).toList();
       return _prefs.setStringList('climes', listData);
     } catch (e) {
       return false;
