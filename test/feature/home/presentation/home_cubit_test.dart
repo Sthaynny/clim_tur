@@ -90,21 +90,9 @@ Future<void> main() async {
       build: () {
         return homeCubitSuccess!;
       },
-      act: (bloc) async => bloc.loadClimeLocal(),
+      act: (bloc) async => bloc.loadClimeLocal('ss'),
       expect: () => [
-        isA<HomeLoading>(),
         isA<HomeLoaded>(),
-      ],
-    );
-    blocTest<HomeCubit, HomeState>(
-      'get Local clime Error',
-      build: () {
-        return homeCubitError!;
-      },
-      act: (bloc) async => bloc.loadClimeLocal(),
-      expect: () => [
-        isA<HomeLoading>(),
-        isA<HomeLoadedLocalError>(),
       ],
     );
   });
@@ -124,14 +112,14 @@ class MockSearchUseCaseError extends Mock implements GetClimeUsercase {
 
 class MockSearchLocalUseCaseSuccess extends Mock
     implements GetClimeLocalUsercase {
-  Future<ClimeEntity?> call() async {
+  Future<ClimeEntity?> call(String search) async {
     return _tInstanceClimeModel;
   }
 }
 
 class MockSearchLocalUseCaseError extends Mock
     implements GetClimeLocalUsercase {
-  Future<ClimeEntity?> call() async {
+  Future<ClimeEntity?> call(String search) async {
     return null;
   }
 }

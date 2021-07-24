@@ -48,7 +48,7 @@ class _MockDataSourceError extends Mock implements ClimeDatasource {
 
 class _MockLocalDataSourceSuccess extends Mock implements ClimeLocalDatasource {
   @override
-  Future<ClimeEntity?> getClimeLocal() async {
+  Future<ClimeEntity?> getClimeLocal(String search) async {
     return _tInstanceClimeModel;
   }
 
@@ -60,7 +60,7 @@ class _MockLocalDataSourceSuccess extends Mock implements ClimeLocalDatasource {
 
 class _MockLocalDataSourceError extends Mock implements ClimeLocalDatasource {
   @override
-  Future<ClimeEntity?> getClimeLocal() async {
+  Future<ClimeEntity?> getClimeLocal(String search) async {
     return null;
   }
 
@@ -99,13 +99,13 @@ void main() {
     'Resquest Local',
     () {
       test('Success Request getClimesLocal', () async {
-        final result = await repositorySuccess.getClimesLocal();
+        final result = await repositorySuccess.getClimesLocal('ss');
 
         expect(result != null, true);
       });
 
       test('Error Request getClimesLocal', () async {
-        final result = await repositoryError.getClimesLocal();
+        final result = await repositoryError.getClimesLocal('ss');
 
         expect(result == null, true);
       });

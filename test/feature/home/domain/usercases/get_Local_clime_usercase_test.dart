@@ -24,7 +24,7 @@ final _tInstanceClimeModel = ClimeModel(
 
 class _MockRepositorySuccess extends Mock implements IClimeRepository {
   @override
-  Future<ClimeEntity?> getClimesLocal() async {
+  Future<ClimeEntity?> getClimesLocal(String search) async {
     return _tInstanceClimeModel;
   }
 
@@ -36,7 +36,7 @@ class _MockRepositorySuccess extends Mock implements IClimeRepository {
 
 class _MockRepositoryError extends Mock implements IClimeRepository {
   @override
-  Future<ClimeEntity?> getClimesLocal() async {
+  Future<ClimeEntity?> getClimesLocal(String search) async {
     return null;
   }
 
@@ -56,7 +56,7 @@ void main() {
       test('Success Request', () async {
         final GetClimeLocalUsercase usercase =
             GetClimeLocalUsercase(repository: _repositorySuccess);
-        final result = await usercase();
+        final result = await usercase('ss');
 
         expect(result != null, true);
       });
@@ -65,7 +65,7 @@ void main() {
         final GetClimeLocalUsercase usercase =
             GetClimeLocalUsercase(repository: _repositoryError);
 
-        final result = await usercase();
+        final result = await usercase('ss');
 
         expect(result == null, true);
       });

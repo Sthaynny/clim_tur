@@ -24,7 +24,7 @@ final _tInstanceClimeModel = ClimeModel(
 
 class _MockRepositorySuccess extends Mock implements IClimeRepository {
   @override
-  Future<ClimeEntity?> getClimesLocal() async {
+  Future<ClimeEntity?> getClimesLocal(String search) async {
     return _tInstanceClimeModel;
   }
 
@@ -36,7 +36,7 @@ class _MockRepositorySuccess extends Mock implements IClimeRepository {
 
 class _MockRepositoryError extends Mock implements IClimeRepository {
   @override
-  Future<ClimeEntity?> getClimesLocal() async {
+  Future<ClimeEntity?> getClimesLocal(String search) async {
     return null;
   }
 
