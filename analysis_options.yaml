@@ -1,4 +1,4 @@
-include: package:lint/analysis_options.yaml
+
 
 linter:
   rules:
@@ -12,6 +12,10 @@ linter:
     sized_box_for_whitespace: false
     avoid_setters_without_getters: false
     sort_pub_dependencies: false
+    always_use_package_imports: true
+    avoid_print: true
+    
+    argument_type_not_assignable: false
     
     # Util classes are awesome!
     avoid_classes_with_only_static_members: false
@@ -33,8 +37,6 @@ linter:
     
     # Blindly follow the Flutter code style, which prefers types everywhere
     always_specify_types: false
-    argument_type_not_assignable: false
-    
   
     # Back to the 80s
     lines_longer_than_80_chars: true

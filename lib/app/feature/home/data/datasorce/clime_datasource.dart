@@ -4,7 +4,7 @@ import 'package:clim_tur/core/network/end_point.dart';
 import 'package:clim_tur/core/network/request/methods/get.dart';
 
 class ClimeDatasource {
-  Future<ApiResult> getClime(String search) {
+  Future<ApiResult> getClime(String search) async {
     final endpoint = EndPoint(
       method: Get(),
       path: 'http://api.openweathermap.org/data/2.5/weather',

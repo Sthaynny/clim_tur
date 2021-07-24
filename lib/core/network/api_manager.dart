@@ -17,7 +17,6 @@ class ApiManager {
         http: _networkProvider,
         endpoint: endpoint,
       );
-
       if (response.status! >= 200 && response.status! < 400) {
         return Future<Success>.value(
           Success(data: response.data, statusCode: response.status!),

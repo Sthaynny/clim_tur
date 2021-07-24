@@ -4,14 +4,14 @@ import 'package:clim_tur/app/feature/home/domain/entity/weather_forecast_entity.
 
 class WeatherForecastModel extends WeatherForecastEntity {
   WeatherForecastModel({
-    required double temp,
-    required double feelsLike,
-    required double tempMin,
-    required double tempMax,
-    required int pressure,
-    required int humidity,
-    required int seaLevel,
-    required int grndLevel,
+    double? temp,
+    double? feelsLike,
+    double? tempMin,
+    double? tempMax,
+    int? pressure,
+    int? humidity,
+    int? seaLevel,
+    int? grndLevel,
   }) : super(
           feelsLike: feelsLike,
           temp: temp,
@@ -28,14 +28,14 @@ class WeatherForecastModel extends WeatherForecastEntity {
 
   factory WeatherForecastModel.fromMap(Map<String, dynamic> map) {
     return WeatherForecastModel(
-      temp: map['temp'] as double,
-      feelsLike: map['feelsLike'] as double,
-      tempMin: map['tempMin'] as double,
-      tempMax: map['tempMax'] as double,
-      pressure: map['pressure'] as int,
-      humidity: map['humidity'] as int,
-      seaLevel: map['seaLevel'] as int,
-      grndLevel: map['grndLevel'] as int,
+      temp: map['temp'],
+      feelsLike: map['feelsLike'],
+      tempMin: map['temp_min'],
+      tempMax: map['temp_max'],
+      pressure: map['pressure'],
+      humidity: map['humidity'],
+      seaLevel: map['seaLevel'],
+      grndLevel: map['grndLevel'],
     );
   }
   @override
@@ -69,8 +69,8 @@ class WeatherForecastModel extends WeatherForecastEntity {
     return {
       'temp': temp,
       'feelsLike': feelsLike,
-      'tempMin': tempMin,
-      'tempMax': tempMax,
+      'temp_min': tempMin,
+      'temp_max': tempMax,
       'pressure': pressure,
       'humidity': humidity,
       'seaLevel': seaLevel,

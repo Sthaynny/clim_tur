@@ -1,11 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.sthaynny.clim_tur">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="clim_tur"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true" >
+        
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
+            
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
