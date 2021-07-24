@@ -23,10 +23,21 @@ class TextClimeWidget extends StatelessWidget {
             width: 100.w,
             height: 100.w,
             decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+                stops: [
+                  0.5,
+                  0.9,
+                ],
+                colors: [
+                  climeEntity.weather[0].icon.contains('n')
+                      ? Colors.blue.shade900.withOpacity(0.60)
+                      : Colors.blueAccent.shade100.withOpacity(0.60),
+                  Colors.white30,
+                ],
+              ),
               borderRadius: BorderRadius.circular(12.w),
-              color: climeEntity.weather[0].icon.contains('n')
-                  ? Colors.blue.shade900.withOpacity(0.60)
-                  : Colors.blueAccent.shade100.withOpacity(0.60),
               image: DecorationImage(
                 image: NetworkImage(
                     'https://openweathermap.org/img/wn/${climeEntity.weather[0].icon}@2x.png'),
