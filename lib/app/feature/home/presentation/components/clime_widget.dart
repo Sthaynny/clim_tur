@@ -28,7 +28,7 @@ class ClimeWidget extends StatelessWidget {
           ),
           TitleCenterWidget(
             title:
-                '''humidade: ${climeEntity.weatherForecast.humidity}% | Min: ${climeEntity.weatherForecast.tempMin} ºC | Max: ${climeEntity.weatherForecast.tempMax} ºC''',
+                '''Humidade: ${climeEntity.weatherForecast.humidity}% | Min: ${climeEntity.weatherForecast.tempMin} ºC | Max: ${climeEntity.weatherForecast.tempMax} ºC''',
             fontSize: 12.ssp,
             fontWeight: FontWeight.bold,
           ),
