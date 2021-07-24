@@ -34,8 +34,13 @@ class _HomeScreenState extends State<HomeScreen> with BottomSheetMixin {
         ],
         backgroundColor: Theme.of(context).appBarTheme.color,
       ),
-      body: BlocBuilder<HomeCubit, HomeState>(
+      body: BlocConsumer<HomeCubit, HomeState>(
         bloc: cubit,
+        listener: (context, state) {
+          if (state is HomeInitial) {
+            cubit?.loadClimeLocal();
+          }
+        },
         builder: (context, state) {
           if (state is HomeLoading) {
             return const ProgressIndicatorWidget();
@@ -60,10 +65,18 @@ class _HomeScreenState extends State<HomeScreen> with BottomSheetMixin {
           return Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: const Text(
-                'Pesquise a cidade para visualizar o clima!',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/logo.png',
+                    scale: 150.w,
+                  ),
+                  const Text(
+                    'Pesquise a cidade para visualizar o clima!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ],
               ),
             ),
           );
