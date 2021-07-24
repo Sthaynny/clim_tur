@@ -20,23 +20,24 @@ class HomeCubit extends Cubit<HomeState> {
   final GetClimeLocalUsercase _usercaseGetLocal;
   Future<void> loadClimeApi(String search) async {
     emit(HomeLoading());
-    final result = await _usercase(search);
-    result.fold(
-      (_) => emit(HomeLoadedError()),
-      (clime) async {
-        await _usercaseSaveLocal(clime);
-        emit(HomeLoaded(clime));
-      },
-    );
+    if (await loadClimeLocal(search)) {
+      final result = await _usercase(search);
+      result.fold(
+        (_) => emit(HomeLoadedError()),
+        (clime) async {
+          await _usercaseSaveLocal(clime);
+          emit(HomeLoaded(clime));
+        },
+      );
+    }
   }
 
-  Future loadClimeLocal() async {
-    emit(HomeLoading());
-    final result = await _usercaseGetLocal();
-    if (result != null) {
-      emit(HomeLoaded(result));
-    } else {
-      emit(HomeLoadedLocalError());
+  Future<bool> loadClimeLocal(String search) async {
+    final responseCache = await _usercaseGetLocal(search);
+    if (responseCache != null) {
+      emit(HomeLoaded(responseCache));
+      return false;
     }
+    return true;
   }
 }

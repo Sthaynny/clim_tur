@@ -4,6 +4,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class IClimeRepository {
   Future<Either<ApiError, ClimeEntity>> getClimes(String search);
-  Future<ClimeEntity?> getClimesLocal();
+  Future<ClimeEntity?> getClimesLocal(String search);
   Future<bool> saveClimesLocal(ClimeEntity climeEntity);
 }

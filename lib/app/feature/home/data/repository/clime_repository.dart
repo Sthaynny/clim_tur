@@ -30,8 +30,8 @@ class ClimeRepository implements IClimeRepository {
   }
 
   @override
-  Future<ClimeEntity?> getClimesLocal() {
-    return _datasourceLocal.getClimeLocal();
+  Future<ClimeEntity?> getClimesLocal(String search) {
+    return _datasourceLocal.getClimeLocal(search);
   }
 
   @override

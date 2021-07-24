@@ -6,8 +6,8 @@ class GetClimeLocalUsercase {
       : _repository = repository;
   final IClimeRepository _repository;
 
-  Future<ClimeEntity?> call() async {
-    final result = await _repository.getClimesLocal();
+  Future<ClimeEntity?> call(String search) async {
+    final result = await _repository.getClimesLocal(search);
     return result;
   }
 }

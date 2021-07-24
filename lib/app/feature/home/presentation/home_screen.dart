@@ -34,13 +34,8 @@ class _HomeScreenState extends State<HomeScreen> with BottomSheetMixin {
         ],
         backgroundColor: Theme.of(context).appBarTheme.color,
       ),
-      body: BlocConsumer<HomeCubit, HomeState>(
+      body: BlocBuilder<HomeCubit, HomeState>(
         bloc: cubit,
-        listener: (context, state) {
-          if (state is HomeInitial) {
-            cubit?.loadClimeLocal();
-          }
-        },
         builder: (context, state) {
           if (state is HomeLoading) {
             return const ProgressIndicatorWidget();
