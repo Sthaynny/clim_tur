@@ -36,11 +36,11 @@
 
 # :camera: Screenshots
 <div align="center">
-   <img src="https://user-images.githubusercontent.com/46109133/123561569-84935a80-d77f-11eb-9682-57d9352858bf.png" width="250px">
-   <img src="https://user-images.githubusercontent.com/46109133/123561581-937a0d00-d77f-11eb-9eb2-4246b8894033.png" width="250px">
-   <img src="https://user-images.githubusercontent.com/46109133/123561582-95dc6700-d77f-11eb-8f74-6504083e8bab.png" width="250px">
+   <img src="https://user-images.githubusercontent.com/46109133/126879080-eccb0aca-f2c2-4815-8d4e-029348a67f09.png" width="250px">
+   <img src="https://user-images.githubusercontent.com/46109133/126879081-3b6361a9-57f5-4975-9a14-f4c53eabea4a.png" width="250px">
+   <img src="https://user-images.githubusercontent.com/46109133/126879086-91870d91-f7f6-47b5-a96d-b286d9339e97.png" width="250px">
+   <img src="https://user-images.githubusercontent.com/46109133/126879087-a99e3c29-c0a6-4d73-9fa6-5efd62453b69.png" width="250px">
 </div>
-
 
    
 # :rocket: Technologies
