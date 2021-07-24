@@ -66,10 +66,11 @@ class _HomeScreenState extends State<HomeScreen> with BottomSheetMixin {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     'assets/logo.png',
-                    scale: 150.w,
+                    width: 300.w,
                   ),
                   const Text(
                     'Pesquise a cidade para visualizar o clima!',
