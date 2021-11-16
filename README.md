@@ -72,8 +72,6 @@ Create a <a href="https://github.com/Sthaynny/pay_flow/issues">new issue report<
 
 # :sparkles: Contributing
 
-This project follows the Angular Convention commits pattern. [Click](./commitlint.config.js) to see the available prefixes.
-
 - Fork this repository;
 - Create a new branch to develop your feature: `git checkout -b my-feature`;
 - Commit your changes: `git commit -m 'feat: my new feature'`;
